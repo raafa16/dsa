@@ -1,15 +1,13 @@
-def selectionSort(alist):
-    for fillslot in range(len(alist)-1, 0, -1):
-        positionOfMax = 0
-        for location in range(1, fillslot+1):
-            if alist[location] > alist[positionOfMax]:
-                positionOfMax = location
+def selection_sort(array):
+    for i in range(len(array)):
+        # We assume that the first item of the unsorted segment is the smallest
+        min_value = i
 
-        temp = alist[fillslot]
-        alist[fillslot] = alist[positionOfMax]
-        alist[positionOfMax] = temp
+        for j in range(i + 1, len(array)):
+            if array[j] < array[min_value]:
+                min_value = j
 
+        # Swap values of the lowest unsorted element with the first unsorted element
+        array[i], array[min_value] = array[min_value], array[i]
 
-alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-selectionSort(alist)
-print(alist)
+    return array

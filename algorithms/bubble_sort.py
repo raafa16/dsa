@@ -1,31 +1,16 @@
-def bubbleSort(alist):
-    for passnum in range(len(alist)-1, 0, -1):
-        for i in range(passnum):
-            if alist[i] > alist[i+1]:
-                temp = alist[i]
-                alist[i] = alist[i+1]
-                alist[i+1] = temp
+def bubble_sort(array):
+    # We set swapped to True so the loop runs at least once
+    swapped = True
 
+    while swapped:
+        swapped = False
+        for i in range(len(array) - 1):
+            if array[i] > array[i + 1]:
+                # Swap the elements
+                array[i], array[i + 1] = array[i + 1], array[i]
+                # Set the flag to True so we'll loop again
+                swapped = True
 
-alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-bubbleSort(alist)
-print(alist)
+    return array
 
-
-def shortBubbleSort(alist):
-    exchanges = True
-    passnum = len(alist)-1
-    while passnum > 0 and exchanges:
-        exchanges = False
-        for i in range(passnum):
-            if alist[i] > alist[i+1]:
-                exchanges = True
-                temp = alist[i]
-                alist[i] = alist[i+1]
-                alist[i+1] = temp
-        passnum = passnum-1
-
-
-alist = [20, 30, 40, 90, 50, 60, 70, 80, 100, 110]
-shortBubbleSort(alist)
-print(alist)
+# BigO(n)
