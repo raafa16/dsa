@@ -1,16 +1,37 @@
-def bubble_sort(array):
-    # We set swapped to True so the loop runs at least once
-    swapped = True
+# Python program for implementation of Bubble Sort
 
-    while swapped:
-        swapped = False
-        for i in range(len(array) - 1):
-            if array[i] > array[i + 1]:
-                # Swap the elements
-                array[i], array[i + 1] = array[i + 1], array[i]
-                # Set the flag to True so we'll loop again
+def bubbleSort(arr):
+    n = len(arr)
+    # optimize code, so if the array is already sorted, it doesn't need
+    # to go through the entire process
+    swapped = False
+    # Traverse through all array elements
+    for i in range(n-1):
+        # range(n) also work but outer loop will
+        # repeat one time more than needed.
+        # Last i elements are already in place
+        for j in range(0, n-i-1):
+
+            # traverse the array from 0 to n-i-1
+            # Swap if the element found is greater
+            # than the next element
+            if arr[j] > arr[j + 1]:
                 swapped = True
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
 
-    return array
+        if not swapped:
+            # if we haven't needed to make a single swap, we
+            # can just exit the main loop.
+            return
 
-# BigO(n)
+
+# Driver code to test above
+arr = [64, 34, 25, 12, 22, 11, 90]
+
+bubbleSort(arr)
+
+print("Sorted array is:")
+for i in range(len(arr)):
+    print("% d" % arr[i], end=" ")
+
+# BigO(n^2)
