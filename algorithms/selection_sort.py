@@ -21,3 +21,5 @@ for i in range(len(A)):
 print("Sorted array")
 for i in range(len(A)):
     print("%d" % A[i]),
+
+# BigO(n)
