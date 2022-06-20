@@ -1,13 +1,23 @@
-def selection_sort(array):
-    for i in range(len(array)):
-        # We assume that the first item of the unsorted segment is the smallest
-        min_value = i
+# Python program for implementation of Selection
+# Sort
+import sys
+A = [64, 25, 12, 22, 11]
 
-        for j in range(i + 1, len(array)):
-            if array[j] < array[min_value]:
-                min_value = j
+# Traverse through all array elements
+for i in range(len(A)):
 
-        # Swap values of the lowest unsorted element with the first unsorted element
-        array[i], array[min_value] = array[min_value], array[i]
+    # Find the minimum element in remaining
+    # unsorted array
+    min_idx = i
+    for j in range(i+1, len(A)):
+        if A[min_idx] > A[j]:
+            min_idx = j
 
-    return array
+    # Swap the found minimum element with
+    # the first element
+    A[i], A[min_idx] = A[min_idx], A[i]
+
+# Driver code to test above
+print("Sorted array")
+for i in range(len(A)):
+    print("%d" % A[i]),
