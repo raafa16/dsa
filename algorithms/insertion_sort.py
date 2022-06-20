@@ -1,16 +1,28 @@
-def insertionSort(alist):
-    for index in range(1, len(alist)):
+# Python program for implementation of Insertion Sort
 
-        currentvalue = alist[index]
-        position = index
+# Function to do insertion sort
+def insertionSort(arr):
 
-        while position > 0 and alist[position-1] > currentvalue:
-            alist[position] = alist[position-1]
-            position = position-1
+    # Traverse through 1 to len(arr)
+    for i in range(1, len(arr)):
 
-        alist[position] = currentvalue
+        key = arr[i]
+
+        # Move elements of arr[0..i-1], that are
+        # greater than key, to one position ahead
+        # of their current position
+        j = i-1
+        while j >= 0 and key < arr[j]:
+            arr[j+1] = arr[j]
+            j -= 1
+        arr[j+1] = key
 
 
-alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-insertionSort(alist)
-print(alist)
+# Driver code to test above
+arr = [12, 11, 13, 5, 6]
+insertionSort(arr)
+print("Sorted array is:")
+for i in range(len(arr)):
+    print("%d" % arr[i])
+
+# BigO(n^2)
