@@ -1,35 +1,42 @@
-def mergeSort(alist):
-    print("Splitting ", alist)
-    if len(alist) > 1:
-        mid = len(alist)//2
-        lefthalf = alist[:mid]
-        righthalf = alist[mid:]
+def merge_sort(my_list):
+    if len(my_list) > 1:
+        mid = len(my_list) // 2
+        left = my_list[:mid]
+        right = my_list[mid:]
 
-        mergeSort(lefthalf)
-        mergeSort(righthalf)
+        # Recursive call on each half
+        merge_sort(left)
+        merge_sort(right)
 
+        # Two iterators for traversing the two halves
         i = 0
         j = 0
+
+        # Iterator for the main list
         k = 0
-        while i < len(lefthalf) and j < len(righthalf):
-            if lefthalf[i] <= righthalf[j]:
-                alist[k] = lefthalf[i]
-                i = i+1
+
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                # The value from the left half has been used
+                my_list[k] = left[i]
+                # Move the iterator forward
+                i += 1
             else:
-                alist[k] = righthalf[j]
-                j = j+1
-            k = k+1
+                my_list[k] = right[j]
+                j += 1
+            # Move to the next slot
+            k += 1
 
-        while i < len(lefthalf):
-            alist[k] = lefthalf[i]
-            i = i+1
-            k = k+1
+        # For all the remaining values
+        while i < len(left):
+            my_list[k] = left[i]
+            i += 1
+            k += 1
 
-        while j < len(righthalf):
-            alist[k] = righthalf[j]
-            j = j+1
-            k = k+1
-    print("Merging ", alist)
+        while j < len(right):
+            my_list[k] = right[j]
+            j += 1
+            k +=
 
 
 alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
