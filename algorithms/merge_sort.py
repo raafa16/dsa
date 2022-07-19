@@ -36,9 +36,9 @@ def merge_sort(my_list):
         while j < len(right):
             my_list[k] = right[j]
             j += 1
-            k +=
+            k += 1
 
 
 alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-mergeSort(alist)
+merge_sort(alist)
 print(alist)
